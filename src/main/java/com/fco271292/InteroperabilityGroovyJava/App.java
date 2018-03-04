@@ -19,8 +19,8 @@ public class App {
         System.out.println("Persona. " + p.getId() + " " + p.getName());
         
         System.out.println( "Se genera clase carro con java" );
-        c = populateDomainJava.populateCar(10, "Carro");
-        System.out.println("Carro. " + " "+ c.getId() + " " + c.getTrademark() + " " + c.getModel());
+        c = populateDomainJava.populateCar(10, "Carro","Modelo",p);
+        System.out.println("Carro. " + " "+ c.getId() + " " + c.getTrademark() + " " + c.getModel() + " " + c.getPerson());
         
     }
 }

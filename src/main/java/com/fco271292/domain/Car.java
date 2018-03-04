@@ -18,4 +18,6 @@ public class Car {
 	
 	String model;
 	
+	Person person;
+	
 }
