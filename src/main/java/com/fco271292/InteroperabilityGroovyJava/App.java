@@ -1,26 +1,25 @@
 package com.fco271292.InteroperabilityGroovyJava;
 
-import com.fco271292.domain.Car;
-import com.fco271292.domain.Person;
-import com.fco271292.service.PopulateDomainGroovy;
-import com.fco271292.service.PopulateDomainJava;
+import java.io.File;
+
+import com.fco271292.service.Operaciones;
 
 public class App {
 	
     public static void main( String[] args ){
     	
-    	Person p = new Person();
-    	Car c = new Car();
-    	PopulateDomainGroovy populateDomain = new PopulateDomainGroovy();
-    	PopulateDomainJava populateDomainJava = new PopulateDomainJava();
+    	Operaciones operaciones = new Operaciones();
+        String rutaArchivoExcel = "C:\\Users\\Gigabyte\\Downloads\\SEPOMEX.xlsx";
         
-    	System.out.println( "Se genera clase persona con groovy" );
-        p = populateDomain.populatePerson(1, "FCO RYS");
-        System.out.println("Persona. " + p.getId() + " " + p.getName());
-        
-        System.out.println( "Se genera clase carro con java" );
-        c = populateDomainJava.populateCar(10, "Carro","Modelo",p);
-        System.out.println("Carro. " + " "+ c.getId() + " " + c.getTrademark() + " " + c.getModel() + " " + c.getPerson());
-        
+        ClassLoader classLoader = App.class.getClassLoader();
+        try {
+        	System.out.println( "Inicio..." );
+        	File excel = new File(classLoader.getResource("SEPOMEX.xlsx").getFile());
+            operaciones.mostrarMenu(excel.getAbsolutePath());
+            System.out.println( "Termino..." );
+        }catch(Exception e) {
+        	System.out.println("Error al cargar Excel "+e.getMessage());
+        }
+    	
     }
 }
