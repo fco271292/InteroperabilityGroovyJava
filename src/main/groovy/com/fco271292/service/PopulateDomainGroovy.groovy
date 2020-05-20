@@ -6,8 +6,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook
 
 import com.fco271292.domain.CodigoPostal
 
-import groovy.json.JsonOutput
-
 class PopulateDomainGroovy {
 	
 	OperacionesExcel operacionesExcel = new OperacionesExcel();
