@@ -1,6 +1,5 @@
 package com.fco271292.service
 
-import org.apache.poi.xssf.usermodel.XSSFCell
 import org.apache.poi.xssf.usermodel.XSSFRow
 import org.apache.poi.xssf.usermodel.XSSFSheet
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
@@ -23,9 +22,10 @@ class Operaciones {
 				case "0":
 				break;
 				case "1":
-				     def listaCodigoPostal = populateDomain.convertirExcelObjetoCodigoPostal(rutaArchivo);
+				     def listaCodigoPostal = populateDomain.convertirExcelObjetoCodigoPostal(rutaArchivo)
 					 listaCodigoPostal.each{codigoPostal->
-						 println "${codigoPostal.descripcionAsentamiento} ${">"*3} ${codigoPostal.nombreMunicipio} ${">"*3} ${codigoPostal.nombreEstado}"
+						 def fila = """${codigoPostal.codigoPostal} | ${codigoPostal.descripcionAsentamiento} | ${codigoPostal.nombreMunicipio} | ${codigoPostal.nombreEstado}"""
+						 println fila
 					 }
 				break;
 				case "2":
@@ -55,11 +55,10 @@ class Operaciones {
 					row.createCell(1).setCellValue(codigoPostalObjeto.descripcionAsentamiento)
 					row.createCell(3).setCellValue(codigoPostalObjeto.nombreMunicipio)
 					row.createCell(4).setCellValue(codigoPostalObjeto.nombreEstado)
-					fabricaExcel.guardaLibro(workbook, rutaArchivo);
+					fabricaExcel.guardaLibro(workbook, rutaArchivo)
 				break;
 			}
-		}
-			
+		}		
 	}
 	
 }
